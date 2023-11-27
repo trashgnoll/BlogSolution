@@ -1,0 +1,97 @@
+﻿@page
+@model Blog.Pages.Articles.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Article</h4>
+<hr />
+<div class="row">
+    <div class="col-md-10">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Article.Title" class="control-label"></label>
+                <input asp-for="Article.Title" class="form-control" />
+                <span asp-validation-for="Article.Title" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Article.Id" />
+            <div class="form-group">
+                <label asp-for="Article.Author" class="control-label" hidden></label>
+                <input  type="hidden" asp-for="Article.Author" class="form-control" />
+                <span asp-validation-for="Article.Author" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Article.LastEditDate" class="control-label" hidden></label>
+                <input  type="hidden" asp-for="Article.LastEditDate" class="form-control" />
+                <span asp-validation-for="Article.LastEditDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                 <label asp-for="Article.Tags" class="control-label"></label>
+                <div class="table">
+                    <table>
+                        <tr>
+                            @{
+                                int cnt = 0;
+
+                                foreach (var tag in Model.AssignedTagDataList)
+                                {
+                                    if (cnt++ % 6 == 0)
+                                    {
+                                    @:</tr><tr>
+                                    }
+                                    @:<td>
+                                        <input type="checkbox"
+                                               name="selectedTags"
+                                               value="@tag.TagId"
+                                               @(Html.Raw(tag.Assigned ? "checked=\"checked\"" : "")) />
+                                               @tag.TagId @(Html.Raw("&nbsp &nbsp"))
+                                               //@tag.TagId 
+                                               @:  
+                                    @:</td>
+                                }
+                            @:</tr>
+                            }
+                    </table>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Article.Content" class="control-label"></label>
+                <textarea asp-for="Article.Content" class="form-control"></textarea>
+                <span asp-validation-for="Article.Content" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@*@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+*@
+ 
+@section Scripts{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    @*Rich Text Editor according instructions here:  https://www.c-sharpcorner.com/article/inserting-rich-text-editor-in-asp-net-mvc-6/*@
+     <script>
+           tinymce.init({
+               selector: 'textarea'
+
+               //selector: 'textarea#body'
+           });
+       </script>
+}

@@ -1,0 +1,41 @@
+﻿@page
+@model Blog.Pages.Tags.IndexModel
+
+@{
+    ViewData["Title"] = "Tags";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Tags</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Tags[0].Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tags[0].Disabled)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Tags) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Disabled)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

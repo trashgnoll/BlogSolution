@@ -1,0 +1,22 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Hello again</h1>
+    <p>Let's say someone is interested in your thoughts.
+        @if (User.Identity.Name == null)
+        {
+            <a id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>  
+            <span> and </span>
+        }
+        try it.
+    </p>
+    @if (User.Identity.Name == null)
+    {
+        <p>Read without registration. Registration is required to add articles or comments.</p>
+        <p>One of the users must be "<em>admin</em>". No unattended power please.</p>
+    }
+</div>

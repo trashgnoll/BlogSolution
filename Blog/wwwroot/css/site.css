@@ -1,0 +1,89 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    font-family: Courier New !important;
+}
+
+html, body, head, header, nav, footer, input[type="text"] {
+    background-color: #212121;
+    color: #20e89e;
+}
+
+input, select, textarea {
+    color: #20e89e;
+}
+
+.form-control {
+    background-color: #212121;
+    color: #20e89e;
+}
+
+input[type="text"], .form-control {
+    color: #3ac3c3 !important;
+    border-color: #3ac380;
+}
+
+input[type="text"]:focus, .form-control:focus {
+    color: #20e89e !important;
+    outline: none;
+    background-color: #1f3128;
+}
+
+.border-top {
+    border-top: 1px solid #3ac380 !important;
+}
+
+.border-bottom {
+    background-color: #212121 !important;
+    color: #20e89e !important;
+    border-bottom: 1px solid #3ac380 !important;
+}
+
+.navbar-light .navbar-brand {
+    color: #20e89e !important;
+}
+
+.text-dark, p, table {
+    color: #3ac3c3 !important;
+}
+
+.display-4, b {
+    color: #20e89e !important;
+    font-weight: bold;
+}
+
+a, button{
+    color: #0067bf;
+    text-decoration: none;
+}
+
+a:hover, button:hover {
+    color: yellow !important;
+}
+
+tr:nth-child(even) {
+    border-bottom: 1px solid #3ac380 !important;
+}
+
+tr:nth-child(odd) {
+    border-color: #212121 !important;
+}
+td[colspan]:not([colspan="1"]) {
+    color: #20e89e !important;
+    font-weight: bold;
+}
+
